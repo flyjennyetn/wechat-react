@@ -1,0 +1,77 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-tab">
+            <view class="weui-navbar">
+                <block wx:for-items="{{state.tabs}}" wx:key="{{index}}">
+                    <view id="{{index}}" class="weui-navbar__item {{state.activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                        <view class="weui-navbar__title">{{item}}</view>
+                    </view>
+                </block>
+                <view class="weui-navbar__slider" style="left: {{state.sliderLeft}}px; transform: translateX({{state.sliderOffset}}px); -webkit-transform: translateX({{state.sliderOffset}}px);"></view>
+            </view>
+            <view class="weui-tab__panel">
+                <view class="weui-tab__content"  hidden="{{state.activeIndex != 0}}">
+                    <block wx:if="{{props.courses.coursesUp !== null}}">
+                      <view class="containerItem" wx:for="{{props.courses.coursesUp}}" wx:key="coursesUpId">
+                            <image src="{{item.videoImgUrl}}" mode="scaleToFill" class="showImg" />
+                            <view class="tests">
+                                <button class="button" data-lesson-id="{{item.lessonId}}" bindtap="learningLesson">随堂考</button>
+                            </view>
+                            <View class="botTitle">
+                                <View class="botTitleLeft">
+                                    <image class="tipLabel" src="../../images/tipLabel.png" mode="scaleToFill"  />
+                                    <Text class="marPad">{{item.lessonSname}}</Text>
+                                    <Text class="marPad">{{item.extCode1}}</Text>
+                                    <Text style="color: {{item.stuTime !='' ? '#2bac64' : '#ff0000'}}">{{item.studyState}}</Text>
+                                </View>
+                                <View wx:if="{{item.stuTime !== ''}}" class="timeData" >
+                                    <image class="timeSpan" src="../../images/time.png" mode="scaleToFill" />
+                                    <Text class="time">{{item.stuTime}}</Text>
+                                </View>
+                            </View>
+                            <View wx:if="{{item.lessonScore !== ''}}" class="score" >
+                                <Text class="scoreTetxt">课程分数：<Text style="color:#0BBA38">{{item.lessonScore}}分</Text></Text>
+                                <Text class="scoreTetxt">年级排名：<Text style="color:#0288E9">第{{item.gradeRanke}}名</Text></Text>
+                                <Text class="scoreTetxt">班级排名：<Text style="color:#1CB7B9">第{{item.classRanke}}名</Text></Text>
+                            </View>
+                      </view>
+                    </block>
+                </view>
+
+                <view class="weui-tab__content" hidden="{{state.activeIndex != 1}}">
+                    <block wx:if="{{props.courses.coursesDown !== null}}">
+                        <view class="containerItem" wx:for="{{props.courses.coursesDown}}" wx:key="coursesDownId">
+                            <image src="{{item.videoImgUrl}}" mode="scaleToFill" class="showImg" />
+                            <view class="tests">
+                                <button class="button" data-lesson-id="{{item.lessonId}}" bindtap="learningLesson">随堂考</button>
+                            </view>
+                            <View class="botTitle">
+                                <View class="botTitleLeft">
+                                    <image class="tipLabel" src="../../images/tipLabel.png" mode="scaleToFill"  />
+                                    <Text class="marPad">{{item.lessonSname}}</Text>
+                                    <Text class="marPad">{{item.extCode1}}</Text>
+                                    <Text style="color: {{item.stuTime !='' ? '#2bac64' : '#ff0000'}}">{{item.studyState}}</Text>
+                                </View>
+                                <View wx:if="{{item.stuTime !== ''}}" class="timeData" >
+                                    <image class="timeSpan" src="../../images/time.png" mode="scaleToFill" />
+                                    <Text class="time">{{item.stuTime}}</Text>
+                                </View>
+                            </View>
+                            <View wx:if="{{item.lessonScore !== ''}}" class="score" >
+                                <Text class="scoreTetxt">课程分数：<Text style="color:#0BBA38">{{item.lessonScore}}分</Text></Text>
+                                <Text class="scoreTetxt">年级排名：<Text style="color:#0288E9">第{{item.gradeRanke}}名</Text></Text>
+                                <Text class="scoreTetxt">班级排名：<Text style="color:#1CB7B9">第{{item.classRanke}}名</Text></Text>
+                            </View>
+                        </view>
+                    </block>
+                </view>
+
+                <view class="weui-loadmore" wx:if="{{props.courses.coursesUp === null}}">
+                    <view class="weui-loading"></view>
+                    <view class="weui-loadmore__tips">正在加载</view>
+                </view>
+
+            </view>
+        </view>
+    </view>
+</view>

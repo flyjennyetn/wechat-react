@@ -1,0 +1,39 @@
+<view class="weui-panel__hd">{{props.index}}、{{props.examName}}（{{props.subScore}}分）</view>
+<view class="weui-panel__bd">
+    <view class="weui-media-box weui-media-box_small-appmsg">
+        <view class="weui-cells weui-cells_in-small-appmsg">
+
+            <view 
+                wx:for="{{props.options}}" 
+                wx:for-item="el" 
+                wx:key="examSelectOptionsId"
+                bindtap="handleSelected" 
+                data-exam-id="{{props.examId}}"
+                data-value="{{el[0]}}"
+                class="weui-cell weui-cell_access" 
+                hover-class="weui-cell_active">
+                <view class="weui-cell__hd">
+                    <image  
+                        wx:if="{{props.exam[props.examId] == el[0]}}" 
+                        class="circleIcon"
+                        src="../../../images/question_selectImg.png" />
+                    <view wx:else class="circle" />
+                </view>
+
+                <view wx:if="{{props.selectType == 2}}" class="weui-cell__bd weui-cell_primary">
+                        {{el[0]}}、<image class="answerImg" src="{{el[1]}}" />
+                </view>
+
+                <view wx:else class="weui-cell__bd weui-cell_primary">
+                        {{el[0]}}、{{el[1]}}
+                </view>
+            </view>
+            
+            <view wx:if="{{props.lessonScore !== 'no'}}" class="weui-cell weui-cell_access weui-media-box__desc">
+                正确答案是：
+                <image  class="circleIcon" src="../../../images/question_selectImg.png" />
+                {{ props.subAns == '1' ? '正确' : '错误'}}
+            </view>
+        </view>
+    </view>
+</view>

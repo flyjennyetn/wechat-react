@@ -1,0 +1,45 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/index/quizzes/quizzes",
+    "pages/subject/subject",
+    "pages/user/user",
+    "pages/user/info/info",
+    "pages/login/login"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#66cc66",
+    "navigationBarTitleText": "青少年第一人",
+    "navigationBarTextStyle":"#fff"
+  },
+  "tabBar": {
+    "color": "#353535",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "iconPath": "images/unsecurity.png",
+      "selectedIconPath": "images/security.png",
+      "text": "主页"
+    }, {
+      "pagePath": "pages/subject/subject",
+      "iconPath": "images/unproject.png",
+      "selectedIconPath": "images/project.png",
+      "text": "专题"
+    }, {
+      "pagePath": "pages/user/user",
+      "iconPath": "images/mine.png",
+      "selectedIconPath": "images/mined.png",
+      "text": "我的"
+    }]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false
+}

@@ -1,0 +1,17 @@
+<view class="page">
+    <view class="page__bd" wx:if="{{examList !== null}}">
+
+        <component key="QuizzesRadio" name="QuizzesRadio"/>
+
+        <view class="weui-panel" >
+            <list key="QuizzesSelect" name="QuizzesSelect"/>
+        </view>
+
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="subAnswer">
+                    {{props.quizzes.lessonScore == 'no' ? '确认提交' : '答题分数:'+props.quizzes.lessonScore+' 分'}}
+            </button>
+        </view>
+
+    </view>
+</view>

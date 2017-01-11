@@ -1,0 +1,23 @@
+<!--logs.wxml-->
+<view class="page">
+    <block wx:if="{{props.subject.items !== null}}">
+    <View class="li" wx:for="{{props.subject.items}}" wx:key="itemsId">
+        <View class="titleMsg">
+            <image class="tipLabel" src="../../images/tipLabel.png" mode="scaleToFill" />
+            <Text class="marPad">{{item.thematicSname}}</Text>
+        </View>
+        <View class="studyNum">
+            已有 <Text style="color:red">{{item.studyNum}}</Text>人学习
+        </View>
+        <image  class="photoUrl1" src="{{item.photoUrl1}}" mode="scaleToFill" />
+        <Text 
+            wx:for="{{item.thematicFname}}" 
+            wx:key="thematicFnameId" 
+            wx:for-index="i" 
+            wx:for-item="el"
+            class="p"> 
+              {{el}}
+         </Text>
+    </View>
+    </block>
+</view>

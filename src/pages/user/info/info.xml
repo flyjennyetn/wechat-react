@@ -1,0 +1,48 @@
+<view class="page">
+
+    <view class="page__bd">
+    
+        <view class="weui-cells__title"></view>
+        <view class="weui-cells weui-cells_after-title" wx:if="{{props.user.userInfo !== null}}">
+            <view class="weui-cell">
+                <view class="weui-cell__bd" >
+                    <image 
+                        wx:if="{{props.user.userInfo.patch !== ''}}" 
+                        src="{{props.user.userInfo.patch}}" 
+                        class="portrait" bindtap="chooseImage" />
+                    <image wx:else src="../../../images/portrait.png" class="portrait" bindtap="chooseImage" />
+                </view>
+                <view class="weui-cell__ft">头像</view>
+            </view>
+        </view>
+
+        <view class="weui-cells__title"></view>
+        <view class="weui-cells weui-cells_after-title" wx:if="{{props.user.userInfo !== null}}">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">姓名</view>
+                <view class="weui-cell__ft">{{props.user.userInfo.name}}</view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">性别</view>
+                <view class="weui-cell__ft">{{props.user.userInfo.gendercode}}</view>
+            </view>
+        </view>
+
+        <view class="weui-cells__title"></view>
+        <view class="weui-cells weui-cells_after-title" wx:if="{{props.user.userInfo !== null}}">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">所在地</view>
+                <view class="weui-cell__ft">{{props.user.userInfo.schoolarea}}</view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">学校</view>
+                <view class="weui-cell__ft">{{props.user.userInfo.school}}</view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">年级</view>
+                <view class="weui-cell__ft">{{props.user.userInfo.grade}}</view>
+            </view>
+        </view>
+
+    </view>
+</view>

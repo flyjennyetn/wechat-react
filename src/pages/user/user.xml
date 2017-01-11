@@ -1,0 +1,51 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-cells__title"></view>
+        <view class="weui-cells__title"></view> 
+        <view class="weui-cells weui-cells_after-title" wx:if="{{props.user.userInfo !== null}}">
+            <view class="weui-cell">
+                <view class="weui-cell__hd" bindtap="previewImage" style="position: relative;margin-right: 10px;">
+                    <image 
+                      wx:if="{{props.user.userInfo.patch !== ''}}"  
+                      src="{{props.user.userInfo.patch}}"  class="portrait" />
+                    <image wx:else src="../../../images/portrait.png" class="portrait" />
+                </view>
+                <view class="weui-cell__bd">
+                    <view>{{props.user.userInfo.name}}</view>
+                    <view style="font-size: 13px;color: #888888;">{{props.user.userInfo.grade}}
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <view class="weui-cells__title"></view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_access">
+                <image src="../../images/userMsg.png" class="userIcon" />
+                <navigator url="info/info"  class="weui-cell__bd">个人资料</navigator >
+            </view>
+            <view class="weui-cell weui-cell_access">
+                <image src="../../images/myCourses.png" class="userIcon" />
+                <navigator url="../index/index" open-type="switchTab" class="weui-cell__bd">我的课程</navigator >
+                <view class="weui-cell__ft weui-cell__ft_in-access" style="font-size: 0">
+                    <!--<view style="display: inline-block;vertical-align:middle; font-size: 17px;">详细信息</view>-->
+                    <view class="weui-badge weui-badge_dot" style="margin-left: 5px;margin-right: 5px;"></view>
+                </view>
+            </view>
+        </view>
+
+        <view class="weui-cells__title"></view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_access">
+                <image src="../../images/changeMsg.png" class="userIcon"/>
+                <view class="weui-cell__bd">账户修改</view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+                <image src="../../images/changePwd.png" class="userIcon"/>
+                <view class="weui-cell__bd">修改密码</view>
+            </view>
+        </view>
+
+
+    </view>
+</view>
