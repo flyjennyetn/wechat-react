@@ -1,5 +1,5 @@
 {
-  "name": "demo",
+  "name": "wechat",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,6 +11,7 @@
   "keywords": [
     "labrador"
   ],
+  "author": "flyjennyetn",
   "dependencies": {
     "al-request": "^0.1.2",
     "al-ui": "^0.1.1",
