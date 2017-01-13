@@ -191,3 +191,18 @@ export default connect(mapStateToProps)(Index)
 
 
  ```注意``` 开发流程请先了解[web端react](https://github.com/flyjennyetn/react)
+
+ 
+##links
+* [react-native]( https://github.com/flyjennyetn/react-native)
+* [react](https://github.com/flyjennyetn/wechat)
+
+##贡献者
+[北京天融互联科技有限](http://www.e-tianrong.com/)
+
+[flyjennyetn](https://github.com/flyjennyetn)
+
+[荣倩倩](rongqianqian@-tianrong.com)
+
+##开源协议
+本项目依据MIT开源协议发布，允许任何组织和个人免费使用。
