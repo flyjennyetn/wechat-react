@@ -192,17 +192,135 @@ export default connect(mapStateToProps)(Index)
 
  ```注意``` 开发流程请先了解[web端react](https://github.com/flyjennyetn/react)
 
+####```src/js/utils/xFetch.js``` 
  
-##links
-* [react-native]( https://github.com/flyjennyetn/react-native)
-* [react](https://github.com/flyjennyetn/wechat)
+```js
+//ajax请求方法==xFetch
+export function xFetch(options) {
+
+  return new Promise((resolve, reject) => {
+     wx.request({
+        url: IPLOCATION + options.requestUrl,
+        data: options
+    })
+    .then((response) => {
+      if(response.statusCode === 200){
+          if(response.data.result === false){
+              toastShort(response.data.msg.toString(),1);
+          }else{
+              resolve(response.data.t);
+          }
+      }
+    })
+    .catch((error) => {
+        reject(error);
+    });
+  })
+}
+```
+微信小程序的ajax方法，公共方法的详细解释请看[web端react](https://github.com/flyjennyetn/react#src/js/utils/xFetch.js)。
+
+####```src/js/sagas/courses.js``` 
+ 
+```js
+function* isLearning({
+  token,
+  grade,
+  lessonId
+}) {
+  const study = yield call(xFetch, {
+    requestUrl: 'interface/queryIfExam.json',
+    token,
+    lessonId
+  });
+  if (study.isPassStudy == 1) {
+      wx.navigateTo({
+        url: '/pages/index/quizzes/quizzes?lessonId='+lessonId+'&lessonScore='+study.lessonScore+'&isPassExam='+study.isPassExam
+      })
+  } else {
+    toastShort("请先学习课程！")
+  }
+}
+
+```
+
+####```src/js/pages/quizzes/quizzes.js``` 
+ 
+```js
+...
+//引入组件
+import QuizzesRadio from '../../../components/QuizzesRadio/QuizzesRadio';
+...
+//把组件当成一个子集，进行传参使用
+children (){
+    const {examList,examSelect,lessonScore,exam} = this.props.quizzes;
+    if(examList != null)
+      return {
+        QuizzesRadio:{
+        //component对应组件名字
+          component: QuizzesRadio,
+          //props传参
+          props: { 
+            examList: examList,
+            exam:exam,
+            selected:this.selected,
+            lessonScore:lessonScore
+          }
+        },
+        QuizzesSelect: examSelect.map((items) => ({
+          component: QuizzesSelect,
+          key: items.examId,
+          exam:exam,
+          props: {
+            ...items,
+            selected:this.selected,
+            lessonScore:lessonScore
+          }
+        }))
+      }
+  }
+```
+组件的使用在```xml```页面
+
+
+####```src/js/pages/quizzes/quizzes.xml``` 
+ 
+```js
+//组件的使用
+<view class="page">
+    <view class="page__bd" wx:if="{{examList !== null}}">
+    
+//component标签的作用是导入一个自定义子组件的布局文件，标签有两个属性，分别为 key (必选)和 name (可选，默认为key的值)。
+        <component key="QuizzesRadio" name="QuizzesRadio"/>
+        
+        <view class="weui-panel" >
+        
+        // <list/> 标签即可自动渲染子组件列表。和 <component/> 标签类似，<list/> 同样也有两个属性，key 和 name。Labrador编译后，会自动将 <list/> 标签编译成 wx:for 循环。
+            <list key="QuizzesSelect" name="QuizzesSelect"/>
+        </view>
+
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="subAnswer">
+                    {{props.quizzes.lessonScore == 'no' ? '确认提交' : '答题分数:'+props.quizzes.lessonScore+' 分'}}
+            </button>
+        </view>
+
+    </view>
+</view>
+```
+微信小程序的组件使用方法与web端不同，web端的组件使用方法为，把组件名字作为标签。而微信小程序把组件当成一个子集，进行传参使用，并且在```xml```页面使用。具体解释请看[Labrador的页面解析](https://github.com/maichong/labrador#页面) 
+
 
 ##贡献者
-[北京天融互联科技有限](http://www.e-tianrong.com/)
+
+[北京天融互联科技有限公司](http://www.e-tianrong.com/)
 
 [flyjennyetn](https://github.com/flyjennyetn)
 
-[荣倩倩](rongqianqian@-tianrong.com)
+[荣倩倩](rongqianqian@e-tianrong.com)
+
+
 
 ##开源协议
+
 本项目依据MIT开源协议发布，允许任何组织和个人免费使用。
