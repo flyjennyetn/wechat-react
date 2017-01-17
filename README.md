@@ -4,6 +4,9 @@
 ##[wechat-react-master](https://github.com/flyjennyetn/wechat-react)
 微信小程序开发框架，集成了```Labrador```,在使用该框架之前，请了解[Labrador](https://github.com/maichong/labrador)，[微信小程序](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/MINA.html?t=2017112)。
 
+本框架是为了解决了多平台开发（[web](https://github.com/flyjennyetn/react)，[原生](https://github.com/flyjennyetn/react-native)，[微信小程序](https://github.com/flyjennyetn/wechat-react)）使用一套标准架构，节约开发成本。组件化开发复用之高能快速搭建一个项目。加入了号称渲染速度最快的虚拟DOM，使用redux数据流控制，让项目逻辑清晰可维护。用webpack构建强力压缩代码，尽可能减小程序体积，让你在1M的限制内做更多的事。
+
+
 ##安装
 * npm install
 
