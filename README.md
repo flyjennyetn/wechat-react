@@ -314,16 +314,6 @@ children (){
 微信小程序的组件使用方法与web端不同，web端的组件使用方法为，把组件名字作为标签。而微信小程序把组件当成一个子集，进行传参使用，并且在```xml```页面使用。具体解释请看[Labrador的页面解析](https://github.com/maichong/labrador#页面) 
 
 
-##贡献者
-
-[北京天融互联科技有限公司](http://www.e-tianrong.com/)
-
-[flyjennyetn](https://github.com/flyjennyetn)
-
-[荣倩倩](rongqianqian@e-tianrong.com)
-
-
-
 ##开源协议
 
 本项目依据MIT开源协议发布，允许任何组织和个人免费使用。
